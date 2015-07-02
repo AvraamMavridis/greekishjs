@@ -3,7 +3,7 @@
 To GreekishJS είναι μια βιβλοθηκή της Javascript με διάφορες μεθόδους για την επεξεργασία λέξεων και προτάσεων της ελληνικής γλώσσας.
 
 ### Μέθοδοι
-
+___
 ##### `xorisTonous()` ή  `χωρίςΤόνους()`
 
 
@@ -16,7 +16,7 @@ To GreekishJS είναι μια βιβλοθηκή της Javascript με διά
   _greekish.xorisTonous(frasi); // Το 80% της επιτυχιας ειναι να κανεις φιγουρα.
 
 ```
-
+___
 ##### `diorthoseToTelikoSigma()` ή  `διόρθωσεΤοΤελικόΣίγμα()`
 
 
@@ -29,7 +29,7 @@ To GreekishJS είναι μια βιβλοθηκή της Javascript με διά
   _greekish.diorthoseToTelikoSigma(frasi); // Ποιός είσαι κύριος
 
 ```
-
+___
 ##### `diorthoseToErotimatiko()` ή  `διόρθωσεΤοΕρωτιματικό()`
 
 
@@ -42,7 +42,7 @@ To GreekishJS είναι μια βιβλοθηκή της Javascript με διά
   _greekish.diorthoseToErotimatiko(frasi); // Ποιός είσαι κύριος;
 
 ```
-
+___
 ##### `einaiErotimatikiAntonimia()` ή  `είναιΕρωτηματικήΑντωνυμία()`
 
 
