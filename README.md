@@ -48,11 +48,23 @@ ___
 
 **Παράδειγμα**
 ```js
-  var frasi = "ποιόΣ";
   "ποιόΣ".einaiErotimatikiAntonimia(); // true
   "Βιβλίο".einaiErotimatikiAntonimia() // false
 
   "ποιόΣ".είναιΕρωτηματικήΑντωνυμία(); // true
   _greekish.einaiErotimatikiAntonimia("ποιόΣ"); // true
+
+```
+
+##### `einaiProsopikiAntonimia()` ή  `είναιΠροσωπικήΑντωνυμία()`
+
+
+**Παράδειγμα**
+```js
+  "αυτός".einaiProsopikiAntonimia(); // true
+  "Βιβλίο".einaiProsopikiAntonimia() // false
+
+  "αυτός".είναιΠροσωπικήΑντωνυμία(); // true
+  _greekish.einaiProsopikiAntonimia("αυτός"); // true
 
 ```

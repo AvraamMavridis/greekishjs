@@ -18,6 +18,15 @@
     return false;
   }
 
+  function __checkArray(item, array){
+    for(var l = 0; l < array.length; ++l){
+      if(_diorthoseToTelikoSigma(_xorisTonous(item.toLowerCase())) === array[l]){
+        return true
+      }
+    }
+    return false;
+  }
+
   var punctuationMapping = {
     '\u0386': '\u0391', // Ά - Α
     '\u0388': '\u0395', // Έ - E
@@ -63,6 +72,14 @@
     'ποιων', 'ποιον','ποιους','ποιες',
     'τινος', 'τι',  'ποσος', 'ποση',
     'ποσα'
+  ];
+
+  var prosopikesAntonimies = [
+    'εγω', 'εσυ', 'εμεις', 'εσεις',
+    'εμενα', 'εσενα','εμας','εσας',
+    'αυτος', 'αυτη','αυτο','αυτοι',
+    'εσεις', 'αυτου', 'αυτης', 'αυτον',
+    'αυτην','τος', 'τη', 'το', 'του', 'της', 'τον', 'την'
   ];
 
   /**
@@ -174,13 +191,21 @@
       if(__isNull(word)){
         word = this;
       }
+      return __checkArray(word, erotimatikesAntonimies);
+  }
 
-      for(var l = 0; l < erotimatikesAntonimies.length; ++l){
-        if(_diorthoseToTelikoSigma(_xorisTonous(word.toLowerCase())) === erotimatikesAntonimies[l]){
-          return true
-        }
+  /**
+  * Ελέγχει αν μια λέξη είναι προσωπική αντωνημία
+  *
+  * @method withPunctouation
+  * @param {String} Μια πρόταση
+  * @return {String} Επιστρέφει την πρόταση με τόνους
+  */
+  var _einaiProsopikiAntonimia = function(word){
+      if(__isNull(word)){
+        word = this;
       }
-      return false;
+      return __checkArray(word, prosopikesAntonimies);
   }
 
   root._greekish = {
@@ -197,7 +222,10 @@
     διόρθωσεΤοΕρωτιματικό: _diorthoseToErotimatiko,
 
     einaiErotimatikiAntonimia: _einaiErotimatikiAntonimia,
-    είναιΕρωτηματικήΑντωνυμία: _einaiErotimatikiAntonimia
+    είναιΕρωτηματικήΑντωνυμία: _einaiErotimatikiAntonimia,
+
+    einaiProsopikiAntonimia: _einaiProsopikiAntonimia,
+    είναιΠροσωπικήΑντωνυμία: _einaiProsopikiAntonimia
   }
 
   // Extend String prototype
