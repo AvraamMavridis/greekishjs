@@ -171,7 +171,7 @@
   * @return {String} Επιστρέφει την πρόταση με τόνους
   */
   var _einaiErotimatikiAntonimia = function(word){
-      if(__isNull(sentence)){
+      if(__isNull(word)){
         word = this;
       }
 
