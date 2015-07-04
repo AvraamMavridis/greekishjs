@@ -44,6 +44,27 @@
     "\u03cd": "\u03c5", // ύ - υ
   }
 
+  /*******
+  *
+  * Σημεία στίξης
+  *
+  *********/
+  var komma = "\x2c";
+  var anokatoteleia1 = "\x3a";
+  var anokatoteleia2 = "\ufe55";
+  var anokatoteleia3 = "\uff1a";
+  var anokatoteleia4 = "\u02f8";
+  var teleia = "\x2e";
+  var thaumastiko = "\x21";
+  var parenthesis1 = "\x28";
+  var parenthesis2 = "\x29";
+  var asteriskos = "\x2a";
+  var quotetionMark = "\x22";
+  var aggili1 = "\x5b";
+  var aggili2 = "\x5d";
+  var anoteleia = "\u0387";
+
+
   var sigmaTeliko = "\u03c2"; // ς
   var sigma = "\u03c3"; // σ
 
@@ -208,6 +229,20 @@
       return __checkArray(word, prosopikesAntonimies);
   }
 
+  /**
+  * Αφερεί τους χαρακτήρες που είναι μη έγκυροι στην ελληνική γλώσσα
+  *
+  * @method withPunctouation
+  * @param {String} Μια πρόταση
+  * @return {String} Επιστρέφει την πρόταση με τόνους
+  */
+  var _afaireseTousMhEgkyrousCharakthres = function(word){
+      if(__isNull(word)){
+        word = this;
+      }
+      return word.replace(/[^\u0371-\u0455,0-9,\u037E,\x3b,\u00A0, ,\x28-\x29,\x21-\x22,\x2c,\x3a,\ufe55,\uff1a,\uff1a,\u02f8,\x2e,\x2a,\x5,\x5d,\u0387]||/g,'');
+  }
+
   root._greekish = {
     xorisTonous: _xorisTonous,
     χωρίςΤόνους: _xorisTonous,
@@ -225,7 +260,10 @@
     είναιΕρωτηματικήΑντωνυμία: _einaiErotimatikiAntonimia,
 
     einaiProsopikiAntonimia: _einaiProsopikiAntonimia,
-    είναιΠροσωπικήΑντωνυμία: _einaiProsopikiAntonimia
+    είναιΠροσωπικήΑντωνυμία: _einaiProsopikiAntonimia,
+
+    afaireseTousMhEgkyrousCharakthres: _afaireseTousMhEgkyrousCharakthres,
+    αφαίρεσεΤουςΜηΈγκυρουςΧαρακτήρες: _afaireseTousMhEgkyrousCharakthres
   }
 
   // Extend String prototype

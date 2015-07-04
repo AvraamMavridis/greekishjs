@@ -4,6 +4,19 @@ To GreekishJS είναι μια βιβλοθηκή της Javascript με διά
 
 ### Μέθοδοι
 ___
+##### `afaireseTousMhEgkyrousCharakthres()` ή  `αφαίρεσεΤουςΜηΈγκυρουςΧαρακτήρες()`
+
+
+**Παράδειγμα**
+```js
+  var frasi = "Θέλειasd αρετή&%/&$%& και/&%$%&// τόλμη η ΕΛΕΥΘΕΡΙΑ!$##";
+  frasi.afaireseTousMhEgkyrousCharakthres(); // Θέλει αρετή και τόλμη η ΕΛΕΥΘΕΡΙΑ!
+
+  frasi.αφαίρεσεΤουςΜηΈγκυρουςΧαρακτήρες(); // Θέλει αρετή και τόλμη η ΕΛΕΥΘΕΡΙΑ!
+  _greekish.afaireseTousMhEgkyrousCharakthres(frasi); // Θέλει αρετή και τόλμη η ΕΛΕΥΘΕΡΙΑ!
+
+```
+___
 ##### `xorisTonous()` ή  `χωρίςΤόνους()`
 
 
