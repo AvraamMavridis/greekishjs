@@ -106,7 +106,7 @@
   /**
   * Μετατρέπει μια πρόταση με τόνους σε μια πρόταση χωρίς τόνους
   *
-  * @method withoutPunctouation
+  * @method xorisTonous
   * @param {String} Μια πρόταση
   * @return {String} Επιστρέφει την πρόταση χωρίς τόνους
   */
@@ -123,7 +123,7 @@
   /**
   * Μετατρέπει μια πρόταση χωρίς τόνους σε μια πρόταση με τόνους
   *
-  * @method withPunctouation
+  * @method meTonous
   * @param {String} Μια πρόταση
   * @return {String} Επιστρέφει την πρόταση με τόνους
   */
@@ -140,7 +140,7 @@
   /**
   * Διορθώνει τις λέξεις που έχουν σ αντί για ς ως τελικό σίγμα
   *
-  * @method withPunctouation
+  * @method diorthoseToTelikoSigma
   * @param {String} Μια πρόταση
   * @return {String} Επιστρέφει την πρόταση με τόνους
   */
@@ -160,29 +160,7 @@
   /**
   * Διορθώνει τις προτάσεις που έχουν ? αντί για ; ως ερωτηματικό
   *
-  * @method withPunctouation
-  * @param {String} Μια πρόταση
-  * @return {String} Επιστρέφει την πρόταση με τόνους
-  */
-  var _diorthoseToErotimatiko = function(sentence){
-    if(__isNull(sentence)){
-      sentence = this;
-    }
-
-    return sentence.split(' ').map(function(word){
-      for(var l = 0; l < foreignQuestionMarks.length; ++l){
-        if(word[word.length - 1] == foreignQuestionMarks[l]){
-          return word.slice(0,-1) + greekQuestionMark;
-        }
-      }
-      return word;
-    }).join(' ');
-  }
-
-  /**
-  * Διορθώνει τις προτάσεις που έχουν ? αντί για ; ως ερωτηματικό
-  *
-  * @method withPunctouation
+  * @method diorthoseToErotimatiko
   * @param {String} Μια πρόταση
   * @return {String} Επιστρέφει την πρόταση με τόνους
   */
@@ -204,7 +182,7 @@
   /**
   * Ελέγχει αν μια λέξη είναι ερωτηματική αντωνημία
   *
-  * @method withPunctouation
+  * @method einaiErotimatikiAntonimia
   * @param {String} Μια πρόταση
   * @return {String} Επιστρέφει την πρόταση με τόνους
   */
@@ -218,7 +196,7 @@
   /**
   * Ελέγχει αν μια λέξη είναι προσωπική αντωνημία
   *
-  * @method withPunctouation
+  * @method einaiProsopikiAntonimia
   * @param {String} Μια πρόταση
   * @return {String} Επιστρέφει την πρόταση με τόνους
   */
@@ -232,7 +210,7 @@
   /**
   * Αφερεί τους χαρακτήρες που είναι μη έγκυροι στην ελληνική γλώσσα
   *
-  * @method withPunctouation
+  * @method afaireseTousMhEgkyrousCharakthres
   * @param {String} Μια πρόταση
   * @return {String} Επιστρέφει την πρόταση με τόνους
   */
@@ -241,6 +219,63 @@
         word = this;
       }
       return word.replace(/[^\u0371-\u0455,0-9,\u037E,\x3b,\u00A0, ,\x28-\x29,\x21-\x22,\x2c,\x3a,\ufe55,\uff1a,\uff1a,\u02f8,\x2e,\x2a,\x5,\x5d,\u0387]||/g,'');
+  }
+
+  var greekLishMapping = {
+    "\x41": "\u0391", // A - Α
+    "\x42": "\u0392", // B - Β
+    "\x43": "\u03a3", // C - Σ
+    "\x44": "\u0394", // D - Δ
+    "\x45": "\u0395", // E - Ε
+    "\x46": "\u03a6", // F - Φ
+    "\x47": "\u0393", // G - Γ
+    "\x48": "\u0397", // H - Η
+    "\x49": "\u0399", // I - Ι
+    "\x4a": "\u0393", // J - Γ
+    "\x4b": "\u039a", // K - Κ
+    "\x4c": "\u039b", // L - Λ
+    "\x4d": "\u039c", // M - Μ
+    "\x4e": "\u039d", // N - Ν
+    "\x4f": "\u039f", // O - Ο
+    "\x50": "\u03a0", // P - Π
+    "\x51": "", // Q - ?
+    "\x52": "\u03a1", // R - Ρ
+    "\x53": "\u03a3", // S - Σ
+    "\x54": "\u03a4", // T - T
+    "\x55": "\u03a5", // U - Υ
+    "\x56": "\u0392", // V - B
+    "\x57": "\u03a9", // W - Ω
+    "\x58": "\u03a7", // X - X
+    "\x59": "\u03a5", // Y - Y
+    "\x5a": "\u0396" // Z - Z
+  }
+
+  var greekLishMapping2 = {
+    "\x4b\x53": "\u039e", // KS - Ξ
+    "\x54\x48": "\u0398", // ΤΗ - Θ
+    "\x50\x53": "\u03a8", // PS - Ψ
+    "\x38": "\u0398", // 8 - Θ
+    "\x34": "\u03a8" // 4 - Ψ
+  }
+
+  /**
+  * Αφερεί τους χαρακτήρες που είναι μη έγκυροι στην ελληνική γλώσσα
+  *
+  * @method afaireseTousMhEgkyrousCharakthres
+  * @param {String} Μια πρόταση
+  * @return {String} Επιστρέφει την πρόταση με τόνους
+  */
+  var _unGreeklish = function(word){
+      if(__isNull(word)){
+        word = this;
+      }
+      word = word.toUpperCase().replace('PS','Ψ').replace('KS', 'Ξ').replace('TH', 'Θ').replace('8', 'Θ').replace('4','Ψ');
+      for(var l = 0; l < word.length; l++){
+        if(greekLishMapping[word[l].toUpperCase()]){
+          word = word.replace(word[l].toUpperCase(), greekLishMapping[word[l].toUpperCase()]);
+        }
+      }
+      return word;
   }
 
   root._greekish = {
@@ -263,7 +298,9 @@
     είναιΠροσωπικήΑντωνυμία: _einaiProsopikiAntonimia,
 
     afaireseTousMhEgkyrousCharakthres: _afaireseTousMhEgkyrousCharakthres,
-    αφαίρεσεΤουςΜηΈγκυρουςΧαρακτήρες: _afaireseTousMhEgkyrousCharakthres
+    αφαίρεσεΤουςΜηΈγκυρουςΧαρακτήρες: _afaireseTousMhEgkyrousCharakthres,
+
+    unGreeklish: _unGreeklish
   }
 
   // Extend String prototype
